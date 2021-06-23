@@ -1,0 +1,33 @@
+[System]
+Name='jabon_ciclo'
+Type='mamdani'
+Version=2.0
+NumInputs=1
+NumOutputs=1
+NumRules=3
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Cantidad_de_Jabón'
+Range=[500 750]
+NumMFs=3
+MF1='ESCASA':'trapmf',[500 500 530 600]
+MF2='NORMAL':'trimf',[550 625 700]
+MF3='MUCHA':'trapmf',[650 720 750 750]
+
+[Output1]
+Name='Ciclo_de_Lavado'
+Range=[15 90]
+NumMFs=3
+MF1='CORTO':'trapmf',[15 15 25 40]
+MF2='MEDIO':'trimf',[30 52.5 75]
+MF3='LARGO':'trapmf',[65 80 90 90]
+
+[Rules]
+1, 1 (1) : 2
+2, 1 (1) : 2
+3, 3 (1) : 2

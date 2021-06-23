@@ -1,0 +1,42 @@
+[System]
+Name='ropa_suciedad_jabon'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=4
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Cantidad_de_ropa'
+Range=[0 50]
+NumMFs=3
+MF1='POCA':'trapmf',[0 0 5 20]
+MF2='NORMAL':'trimf',[10 25 40]
+MF3='MUCHA':'trapmf',[30 45 50 50]
+
+[Input2]
+Name='Grado_de_suciedad'
+Range=[0 10]
+NumMFs=3
+MF1='BAJO':'trapmf',[0 0 1 4]
+MF2='MODERADO':'trimf',[2 5 8]
+MF3='ALTO':'trapmf',[6 9 10 10]
+
+[Output1]
+Name='Cantidad_de_Jabón'
+Range=[500 750]
+NumMFs=3
+MF1='ESCASA':'trapmf',[500 500 530 600]
+MF2='NORMAL':'trimf',[550 625 700]
+MF3='MUCHA':'trapmf',[650 720 750 750]
+
+[Rules]
+1 1, 1 (1) : 1
+1 3, 2 (1) : 1
+2 1, 1 (1) : 1
+2 3, 3 (1) : 1
